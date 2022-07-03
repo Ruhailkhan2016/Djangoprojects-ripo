@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <script>
+
+    // Function for Checking firstname Validation
+      function check_fname() {
+        var f = document.frm.fname.value;
+        var reg1 = /^[A-Za-z]+$/;
+
+        if (f.trim() == "") {
+          document.getElementById("error1").innerHTML =
+            "Please enter your firstname";
+        } else if (!reg1.test(f)) {
+          document.getElementById("error1").innerHTML =
+            "Please enter only alphabet";
+        } else {
+          document.getElementById("error1").innerHTML = "";
+        }
+      }
+
+
+    // Function for Checking lastname Validation
+      function check_lname() {
+        var l = document.frm.lname.value;
+        var reg2 = /^[A-Za-z]+$/;
+
+        if (l.trim() == "") {
+          document.getElementById("error2").innerHTML =
+            "Please enter your lastname";
+        } else if (!reg2.test(l)) {
+          document.getElementById("error2").innerHTML =
+            "Please enter only alphabet";
+        } else {
+          document.getElementById("error2").innerHTML = "";
+        }
+      }
+
+
+    // Function for Checking Email Validation
+      function check_email() {
+        var e = document.frm.email.value;
+        var reg3 =
+          /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+
+        if (e.trim() == "") {
+          document.getElementById("error3").innerHTML =
+            "Please enter your email address";
+            return false;
+        }
+        if (e.indexOf('@') <= 0) {
+          document.getElementById("error3").innerHTML = "Invalid email address";
+          return false;
+        }
+
+        if((e.charAt(e.length-4)!='.') && (e.charAt(e.length-3)!='.'))
+        {
+            document.getElementById("error3").innerHTML = "Invalid email address";
+          return false;
+        }
+        else
+        {
+            document.getElementById("error3").innerHTML = "";
+          return false;
+        }
+      }
+
+
+    // Function for checking Conatct Validation
+      function check_contact(){
+        var ph = document.frm.contact.value;
+        var reg4 = /^[0-9]{10}$/;
+        if(ph.length == 0) 
+        {
+            document.getElementById("error4").innerHTML = "Please enter your contact number";
+            return false;
+        }
+
+        if(!ph.match(reg4)){
+
+            document.getElementById("error4").innerHTML = "Invalid phone number";
+            return false;
+        }else
+
+            document.getElementById("error4").innerHTML = "";
+            return false;
+
+      } 
+
+
+    </script>
+  </head>
+  <body>
+    <center>
+      <form action="" method="post" name="frm">
+        <h1>HTML FORM</h1>
+
+        <table>
+          <tr>
+            <td>Firstname</td>
+            <td>
+              <input type="text" name="fname" id="" onblur="check_fname();"/>
+            </td>
+            <td><span id="error1" style="color: red"></span></td>
+          </tr>
+          <tr>
+            <td>Lastname</td>
+            <td>
+              <input type="text" name="lname" id="" onblur="check_lname();"/>
+            </td>
+            <td><span id="error2" style="color: red"></span></td>
+          </tr>
+          <tr>
+            <td>Email</td>
+            <td>
+              <input type="text" name="email" id="" onblur="return check_email();"/>
+            </td>
+            <td><span id="error3" style="color: red"></span></td>
+          </tr>
+          <tr>
+            <td>Contact</td>
+            <td><input type="text" name="contact" id="" onblur="return check_contact();"/></td>
+            <td><span id="error4" style="color: red"></span></td>
+          </tr>
+          <tr>
+            <td><input type="submit" value="Submit" /></td>
+          </tr>
+        </table>
+      </form>
+    </center>
+  </body>
+</html>
