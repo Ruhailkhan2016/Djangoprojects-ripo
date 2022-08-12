@@ -1,0 +1,116 @@
+{% extends "app/company/base1.html" %}
+{% block content %}
+
+
+
+
+        <!-- hero start here  -->
+        <section class="vh-100">
+            <div class="home-center">
+                <div class="home-desc-center">
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-md-10">
+                                <div class="login-page bg-white shadow rounded p-4">
+                                    <div class="mb-4">
+                                        <h4 class="text-dark md-4"> Update Company profile </h4>
+
+                                    </div>
+
+                                    <form class="login-form" method="POST" action="{% url 'updatecompanyprofile' pk=request.session.id %}" name="contact-form" enctype="multipart/form-data" >
+                                        {% csrf_token %}
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group app-label mt-2">
+                                                    <label class="text-muted">First Name<span class="text-danger">*</span></label>
+                                                    <input type="text" class="form-control resume" placeholder="First Name" name="firstname" required="" value="{{comp.firstname}}">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6 mb-3">
+                                                <div class="form-group app-label mt-2 ">
+                                                    <label class="text-muted">Last Name<span class="text-danger">*</span></label>
+                                                    <input type="text" class="form-control resume" placeholder="Last Name" name="lastname" required="" value="{{comp.lastname}}">
+                                                </div>
+                                            </div>
+
+
+
+                                            <div class="col-md-6 mb-3">
+                                                <div class="form-group app-label mt-2">
+                                                    <label class="text-muted">Company Email<span class="text-danger">*</span></label>
+                                                    <input type="email" class="form-control resume"placeholder="Email Address" name="email" required=""  value="{{user.email}}">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6 mb-3">
+                                                <div class="form-group app-label mt-2">
+                                                    <label class="text-muted">Company Conatct<span class="text-danger">*</span></label>
+                                                    <input type="tel" class="form-control resume" placeholder="Phone Number" name="contact" required="" value="{{comp.contact}}">
+                                                </div>
+                                            </div>
+                                            
+
+                                            <div class="col-md-6 mb-3">
+                                                <div class="form-group app-label ">
+                                                    <label class="text-muted" for="state">State<span class="text-danger">*</span></label>
+                                                    <input type="text" class="form-control resume" placeholder="State" name="state" required="" value="{{comp.state}}">
+                                                    </div>
+                                            </div>
+                                            
+
+
+                                            
+                                            <div class="col-md-6 mb-3">
+                                                <div class="form-group app-label ">
+                                                    <label class="text-muted">City<span class="text-danger">*</span></label>
+                                                    <input type="text" class="form-control resume" placeholder="City" name="city" required="" value="{{comp.city}}">
+                                                </div>
+                                            </div>
+                                            
+                                            
+                                            
+                                            <div class="col-md-6 mb-3">
+                                                <div class="form-group app-label ">
+                                                    <label class="text-muted" for="state">Company Name<span class="text-danger">*</span></label>
+                                                    <input type="text" class="form-control resume" placeholder="Company Name" name="companyname" required="" value="{{comp.company_name}}">
+                                                    </div>
+                                            </div>
+
+
+
+                                            <div class="col-md-6 mb-3">
+                                                <div class="form-group app-label ">
+                                                    <label class="text-muted">Address<span class="text-danger">*</span></label>
+                                                    <input type="text" class="form-control resume" placeholder="Address" name="address" required="" value="{{comp.website}}">
+                                                    </div>
+                                            </div>
+
+
+                                            <div class="col-md-12 mb-3">
+                                                <div class="form-group app-label ">
+                                                    <label class="text-muted">Company Website<span class="text-danger">*</span></label>
+                                                    <input type="text" class="form-control resume" placeholder="Company Website" name="website" required="" value="{{comp.website}}">
+                                                    </div>
+                                            </div>
+
+
+
+                                            <div class="custom-file col-md-6 mt-2 ml-2">
+                                                <label class="custom-file-label col-md-8" for="customInput">Upload Company Logo</label>
+                                                <input type="file" class="custom-file-input" id="customInput" name="image" required="" value="{{comp.logo_pic}}">
+                                            </div>
+
+                                        </form>
+                                    </div>
+                                    <div>
+                                        <button class="btn btn-primary mt-4" type="submit">Submit</button>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        {% endblock %}

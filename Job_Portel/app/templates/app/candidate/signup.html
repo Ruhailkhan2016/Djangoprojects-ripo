@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+
+{% load static %}
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>SignUp</title>
+
+	<link rel="stylesheet" href="{% static '/assets/css/bootstrap.min.css' %}">
+	<link rel="stylesheet" href="{% static '/assets/css/style.css' %}">
+	<link rel="stylesheet" href="{% static '/assets/css/bootstrap-grid.css' %}">
+  <link rel="stylesheet" href="{% static '/https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css' %}">
+</head>
+
+<body style="background-color: #508bfc;"> 
+	<section >
+		<div class="container h-100">
+		  <div class="row d-flex justify-content-center align-items-center h-100">
+			<div class="container">
+			  <div class="">
+				<div class="font-weight-bold">
+					<div class="row justify-content-center">
+					  <div class="col-md-6">
+					  <div class="login_page bg-white shadow rounded p-3">
+					  <div class="">
+	  
+						  <p class="text-center h1 fw-bold mb-4 mx-1 mx-md-4 mt-4">Sign up</p>
+						  
+
+						  <center> <h5 style="color: red;"> {{msg2}} </h5></center>
+						  <center> <h5 style="color: red;"> {{msg3}} </h5></center>
+	  
+						  <form class="login-form" method="POST" action="{% url 'register' %}">
+							{% csrf_token %}
+							
+								
+							<div class=" positions-relative col-md-5 mb-4 mx-md-3 mt-4">
+
+								<label>Select Role<span class="text-danger">*</span></label>
+	
+								<select class="form-select" aria-label="Default select example" name="role" id="">
+	
+									<option selected>Select Role</option>
+									<option>Candidate</option>
+									<option>Company</option>
+								</select>
+							</div>
+						
+							<div class="d-flex flex-row align-items-center mb-4">
+								  <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+								<div class="form-outline flex-fill mb-0">
+									<label>First name <span class="text-danger">*</span> </label>
+									<input type="text" class="form-control" placeholder="First Name" name="firstname" required="" />
+								</div>
+							</div>
+					
+					<div class="d-flex flex-row align-items-center mb-4">
+						  <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+						  <div class="form-outline flex-fill mb-0">
+							<label>Last name <span class="text-danger">*</span> </label>
+							  <input type="text" class="form-control" placeholder="Last Name" name="lastname" required="" />
+						</div>
+					</div>
+
+					<div class="d-flex flex-row align-items-center mb-4">
+						  <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+						  <div class="form-outline flex-fill mb-0">
+							<label>Email <span class="text-danger">*</span> </label>
+							  <input type="email" class="form-control" placeholder="Email" name="email" required />
+						</div>
+					</div>
+						
+						<div class="d-flex flex-row align-items-center mb-4">
+							<i class="fas fa-lock fa-lg me-3 fa-fw"></i>
+							<div class="form-outline flex-fill mb-0">
+								<label>Password <span class="text-danger">*</span> </label>
+								<input type="password" class="form-control" placeholder="Password" name="password" required="" />
+							</div>
+						</div>
+						
+						<div class="d-flex flex-row align-items-center mb-4">
+							<i class="fas fa-key fa-lg me-3 fa-fw"></i>
+							<div class="form-outline flex-fill mb-0">
+								<label>Confirm Password <span class="text-danger">*</span> </label>
+								<input type="password" class="form-control" placeholder="Confirm Password" name="cpassword" required=""/>
+								<small style="color: red;" >{{msg1}}</small>
+							</div>
+						</div>
+
+						
+						<div class="d-flex flex-row align-items-center mb-4">
+							<i class="fas fa-key fa-lg me-3 fa-fw"></i>
+							<div class="form-outline flex-fill mb-0">
+
+							<button type="submit" class="btn btn-primary w-100">Register</button>
+							</div>
+						</div> 
+					</div>
+					
+					<div class="text-center " >Already have an account? <a class="text-primary" href="{% url 'loginpage' %}">Sign in</a></div>
+				</form>
+					
+				</div>
+				</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+</div>
+</section>
+</body>
+</html>

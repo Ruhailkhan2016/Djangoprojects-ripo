@@ -1,0 +1,266 @@
+{% extends "app/candidate/base1.html" %}
+{% block content %}
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    
+</head>
+<body>
+
+    <!-- Loader -->
+  <div id="preloader ">
+    <div id="status">
+      <div class="spinner">
+            <div class="double bounce1"> </div>
+            <div class="double bounce2"></div>
+      </div>
+    </div>
+ </div>
+    <!-- Loader -->
+        <div class="back-to-home rounded d-none d-sm-block">
+            <a href="#" class="text-white rounded d-inline-block text-center"> </a>
+        </div>
+        
+        <!-- hero start here  -->
+        <section class="vh-100")>
+            <div class="home-center">
+                <div class="home-desc-center">
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-md-10">
+                                <div class="login-page bg-white shadow rounded p-4">
+                                    <div class="mb-4">
+                                        <h4 class="text-dark md-4"> Update your profile </h4>
+
+                                    </div>
+                                    {% if messages %}
+                                    {% for message in messages %}
+                                    <div class="alert alert-{{ message.tags }} alert-dismissible fade show mb-0" role="alert">
+                                    <strong>Message: {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}Error{% else %}{{ message.tags|title }}{% endif %}!</strong> {{message}}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                    </div>
+                                    {% endfor %}
+                                    {% endif %}
+
+                                    <form class="login-form" method="POST" action="{% url 'updateprofile' pk=request.session.id %}" name="contact-form" enctype="multipart/form-data" >
+                                        {% csrf_token %}
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group app-label mt-2">
+                                                    <label class="text-muted">First Name<span class="text-danger">*</span></label>
+                                                    <input type="text" class="form-control resume" placeholder="First Name" name="firstname" required="" value="{{cand.firstname}}">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6 mb-3">
+                                                <div class="form-group app-label mt-2 ">
+                                                    <label class="text-muted">Last Name<span class="text-danger">*</span></label>
+                                                    <input type="text" class="form-control resume" placeholder="Last Name" name="lastname" required="" value="{{cand.lastname}}">
+                                                </div>
+                                            </div>
+
+
+                                            <div class="col-md-6 mb-3 w-50">
+                                                <div class="form-group app-label mt-2 ">
+                                                    <label class="text-muted" for="jobtype">Job Type<span class="text-danger" value="{{ cand.job_type }}">*</span></label>
+                                                    
+                                                    {% if cand.job_type %}
+
+                                                    <div class="form button">
+                                                        <input type="text" class="form-control resume" placeholder="Job Type" name="jobtype" required="" value="{{cand.job_type}}">
+                                                    </div>
+
+                                                    {% else %}
+                                                    
+                                                    <div class="form button">
+                                                        <select name="jobtype" class=" nice-select rounded w-100" aria-label="Default select example">
+                                                            <option data-display="Job Type"></option>
+                                                            <option>Full Time</option>
+                                                            <option>Part Time</option>
+                                                            <option>Remote</option>
+                                                        </select>
+                                                    </div>
+
+                                                    {% endif %}
+                                                </div>
+                                            </div>
+
+
+                                            <div class="col-md-6 mb-3">
+                                                <div class="form-group app-label mt-2">
+                                                    <label class="text-muted" for="category">Job Category<span class="text-danger" value="{{cand.jobcategory}}">*</span></label>
+                                                    
+                                                    {% if cand.jobcategory %}
+                                                    <div class="form-button">
+                                                        <input type="text" class="form-control resume" placeholder="Job Category" name="category" required="" value="{{cand.jobcategory}}">
+                                                    </div>
+                                                    {% else %}
+                                                    <div class="form-button">
+                                                        <select  name="category" class="nice-select rounded w-100" >
+                                                            <option data-display="Job Category"></option>
+                                                            <option>Web Developer</option>
+                                                            <option>PHP Developer</option>
+                                                            <option>Web Designer</option>
+                                                            <option>Graphic Designer</option>
+                                                        </select>
+                                                    </div>
+
+                                                    {% endif %}
+                                                </div>
+                                            </div>
+
+
+                                            <div class="col-md-6 mb-3">
+                                                <div class="form-group app-label ">
+                                                    <label class="text-muted" for="state">State<span class="text-danger">*</span></label>
+                                                    <input type="text" class="form-control resume" placeholder="State" name="state" required="" value="{{cand.state}}">
+                                                    </div>
+                                            </div>
+
+
+                                            <div class="col-md-6 mb-3">
+                                                <div class="form-group app-label ">
+                                                    <label class="text-muted">City<span class="text-danger">*</span></label>
+                                                    <input type="text" class="form-control resume" placeholder="City" name="city" required="" value="{{cand.city}}">
+                                                    </div>
+                                            </div>
+
+
+                                            <div class="col-md-6 mb-3">
+                                                <div class="form-group app-label ">
+                                                    <label class="text-muted">Minimum Salary<span class="text-danger">*</span></label>
+                                                    <input type="number" class="form-control resume" placeholder="Minimum Salary" name="minsalary" required="" value="{{cand.min_salary}}">
+                                                    </div>
+                                            </div>
+
+
+                                            <div class="col-md-6 mb-3">
+                                                <div class="form-group app-label ">
+                                                    <label class="text-muted">Maximum Salary<span class="text-danger">*</span></label>
+                                                    <input type="number" class="form-control resume" placeholder="Maximum Salary" name="maxsalary" required="" value="{{cand.max_salary}}">
+                                                    </div>
+                                            </div>
+
+
+                                            <div class="col-md-6 mb-3">
+                                                <div class="form-group app-label ">
+                                                    <label class="text-muted">Highest Educatation<span class="text-danger">*</span></label>
+                                                    <input type="text" class="form-control resume" placeholder="Highest Educatation" name="education" required="" value="{{cand.highestedu}}">
+                                                    </div>
+                                            </div>
+
+                                            <div class="col-md-6 mb-3">
+                                                <div class="form-group app-label ">
+                                                    <label class="text-muted">Experience<span class="text-danger">*</span></label>
+                                                    <input type="text" class="form-control resume" placeholder="Experience" name="experience" required="" value="{{cand.experience}}">
+                                                    </div>
+                                            </div>
+
+
+                                            <div class="col-md-12 mb-3">
+                                                <div class="form-group app-label ">
+                                                    <label class="text-muted">Portfolio Website<span class="text-danger">*</span></label>
+                                                    <input type="text" class="form-control resume" placeholder="Portfolio Website" name="website" required="" value="{{cand.website}}">
+                                                    </div>
+                                            </div>
+
+
+
+                                            <div class="col-md-6 mb-3">
+                                                <div class="form-group app-label mt-2">
+                                                    <label class="text-muted">Email Address <span class="text-danger">*</span></label>
+                                                    <input type="email" class="form-control resume"placeholder="Email Address" name="email" required=""  value="{{user.email}}">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6 mb-3">
+                                                <div class="form-group app-label mt-2">
+                                                    <label class="text-muted">Phone Number<span class="text-danger">*</span></label>
+                                                    <input type="tel" class="form-control resume" placeholder="Phone Number" name="contact" required="" value="{{cand.contact}}">
+                                                </div>
+                                            </div>
+
+ 
+                                            <div class="col-md-6 mb-3">
+                                                <div class="form-group app-label mt-2">
+                                                    <label class="text-muted" for="gender">Gender<span class="text-danger" value="{{cand.gender}}">*</span></label>
+                                                    
+                                                    {% if cand.gender %}
+                                                    <div class="form-button">
+                                                        <input type="text" class="form-control resume" placeholder="Gender" name="gender" required="" value="{{cand.gender}}">
+                                                    </div>
+                                                    {%else%}
+                                                    <div class="form-button">
+                                                        <select name="gender" class="nice-select rounded w-100">
+                                                            <option data-display="Select"></option>
+                                                            <option>Male</option>
+                                                            <option>Female</option>
+                                                            <option>Other</option>
+                                                        </select>
+                                                    </div>
+                                                    {% endif %}
+                                                </div>
+                                            </div>
+
+
+                                            <div class="col-md-6 mb-3">
+                                                <div class="form-group app-label mt-2">
+                                                    <label class="text-muted" for="shift">Shift<span class="text-danger" value="{{cand.shift}}">*</span></label>
+                                                    {% if cand.shift %}
+                                                    <div class="form-button">
+                                                        <input type="text" class="form-control resume" placeholder="Shift" name="shift" required="" value="{{cand.shift}}">
+                                                    </div>
+                                                    {% else %}
+                                                    <div class="form-button">
+                                                        <select name="shift" class="nice-select rounded w-100">
+                                                            <option data-display="Shift"></option>
+                                                            <option>Morning</option>
+                                                            <option>Evening</option>
+                                                        </select>
+                                                    </div>
+                                                    {% endif %}
+                                                </div>
+                                            </div>
+
+                                            
+                                            <div class="custom-file col-md-6 mt-4">
+                                                <label class="custom-file-label col-md-8 ml-3" for="customInput">Upload Files</label>
+                                                <input type="file" class="custom-file-input" id="customInput" name="image" required="" value="{{cand.image}}">
+                                            </div>
+
+                                            <div>
+                                                <button class="btn btn-primary mt-4 p -4" type="submit">Submit</button>
+                                            </div>
+                                    </form>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endblock %}
+            </div>
+        </section>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="footer">
+    <div class="row align-items-center justify-content-xl-between">
+      <div class="col-xl-10 m-auto text-center">
+       
+      </div>
+    </div>
+  </footer>
+</body>
+
+
+</html>

@@ -1,0 +1,74 @@
+{% extends "app/company/base1.html" %}
+{% block content %}
+{% load static %}
+
+    <!-- Begin Page Content -->
+    <div class="container-fluid">
+
+        <!-- Page Heading -->
+        <h1 class="mt-4">Job Applied List</h1>
+            <ol class="breadcrumb mb-4">
+                <li class="breadcrumb-item"><a href="">Dashboard</a></li>
+                <li class="breadcrumb-item active"> Job Applied List </li>
+            </ol>
+
+        <!-- DataTales Example -->
+        <div class="card mb-4">
+            
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" >
+                        <thead>
+                            <tr>
+                                <th>Job Name</th>
+                                <th>Candidate Name</th>
+                                <th>Experience</th>
+                                <th>City</th>
+                                <th>Minimum Salary</th>
+                                <th>Maximum Salary</th>
+                                <th>Contact Number</th>
+                                <th>Email Address</th>
+                            </tr>
+                        </thead>
+                        <!-- <tfoot>
+                            <tr>
+                                <th>Job Name</th>
+                                <th>Company Name</th>
+                                <th>Location</th>
+                                <th>Company Website</th>
+                                <th>Experience</th>
+                                <th>Salary Package</th>
+                            </tr>
+                        </tfoot> -->
+
+                        {% if appliedlist %}
+                        <tbody>
+
+                            {% for i in appliedlist %}
+                            <tr>
+                                <td>{{i.job.jobname}}</td>
+                                <td>{{i.candidate.firstname}} {{i.candidate.lastname}}</td>
+                                <td>{{i.experience}}</td>
+                                <td>{{i.candidate.city}}</td>
+                                <td>{{i.min_salary}}</td>
+                                <td>{{i.max_salary}}</td>
+                                <td>{{i.candidate.contact}}</td>
+                                <td>{{i.email}}</td>    
+                            </tr>
+                            {% endfor %}
+
+                        </tbody>
+                        {% endif %}
+
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- /.container-fluid -->
+
+<!-- End of Main Content -->
+
+{% endblock %}
+

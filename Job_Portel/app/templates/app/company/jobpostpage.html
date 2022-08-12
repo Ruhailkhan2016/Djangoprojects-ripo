@@ -1,0 +1,174 @@
+{% extends "app/company/base1.html" %}
+{% block content %}
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Page</title>
+
+    
+</head>
+<body>
+
+    <!-- Loader -->
+  <div id="preloader ">
+    <div id="status">
+      <div class="spinner">
+            <div class="double bounce1"> </div>
+            <div class="double bounce2"></div>
+      </div>
+    </div>
+ </div>
+    <!-- Loader -->
+        <div class="back-to-home rounded d-none d-sm-block">
+            <a href="#" class="text-white rounded d-inline-block text-center"> </a>
+        </div>
+        
+        <!-- hero start here  -->
+        <section class="vh-100")>
+            <div class="home-center">
+                <div class="home-desc-center">
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-md-10">
+                                <div class="login-page bg-white shadow rounded p-4">
+                                    <div class="mb-4">
+                                        <h4 class="text-dark md-4"> Job Post Form </h4>
+                                            
+                                        {% if msg %}
+                                        <h5 style="color: green;">{{msg}}</h5>
+                                        {% endif %}
+
+                                    </div>
+
+                                    <form class="login-form" method="POST" action="{% url 'jobpost' pk=request.session.id %}" name="contact-form" enctype="multipart/form-data" >
+                                        {% csrf_token %}
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group app-label mt-2">
+                                                    <input type="text" class="form-control resume" placeholder="Job Name" name="jobname" required="" value="">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-12 mb-3">
+                                                <div class="form-group app-label mt-2 ">
+                                                    <input type="text" class="form-control resume" placeholder="Company Name" name="companyname" required="" value="">
+                                                </div>
+                                            </div>
+
+
+                                            <div class="col-md-12 mb-3">
+                                                <div class="form-group app-label ">
+                                                    <input type="text" class="form-control resume" placeholder="Company Address" name="companyaddress" required="" value="">
+                                                    </div>
+                                            </div>
+
+
+                                            <div class="col-md-12 mb-3">
+                                                <div class="form-group app-label mt-2">
+                                                    <input type="tel" class="form-control resume" placeholder="Company Contact" name="companycontact" required="" value="">
+                                                </div>
+                                            </div>
+
+
+                                            <div class="col-md-12 mb-3">
+                                                <div class="form-group app-label mt-2">
+                                                    <input type="email" class="form-control resume"placeholder="Company Email" name="companyemail" required=""  value="">
+                                                </div>
+                                            </div>
+
+                                            
+
+                                            
+                                            <div class="col-md-12 mb-3">
+                                                <div class="form-group app-label ">
+                                                    <input type="text" class="form-control resume" placeholder="Company Website" name="companywebsite" required="" value="">
+                                                </div>
+                                            </div>
+                                            
+                                            
+                                            
+                                            <div class="col-md-12 mb-3">
+                                                <div class="form-group app-label">
+                                                    <input type="text" class="form-control resume" placeholder="Job Description" name="jobdescription" required="" value="">
+                                                </div>
+                                            </div>
+
+
+                                            <div class="col-md-12 mb-3">
+                                                <div class="form-group app-label ">
+                                                    <input type="text" class="form-control resume" placeholder="Qualification" name="qualification" required="" value="">
+                                                </div>
+                                            </div>
+
+
+                                            <div class="col-md-12 mb-3">
+                                                <div class="form-group app-label ">
+                                                    <input type="text" class="form-control resume" placeholder="Responsibilities" name="responsibilities" required="" value="">
+                                                </div>
+                                            </div>
+
+
+                                            <div class="col-md-12 mb-3">
+                                                <div class="form-group app-label ">
+                                                    <input type="text" class="form-control resume" placeholder="Location" name="location" required="" value="">
+                                                </div>
+                                            </div>
+
+
+                                            <div class="col-md-12 mb-3">
+                                                <div class="form-group app-label ">
+                                                    <input type="text" class="form-control resume" placeholder="Salary Package" name="salarypackage" required="" value="">
+                                                </div>
+                                            </div>
+
+
+                                            <div class="col-md-12 mb-3">
+                                                <div class="form-group app-label ">
+                                                    <input type="text" class="form-control resume" placeholder="Experience" name="experience" required="" value="">
+                                                </div>
+                                            </div>
+
+
+
+
+                                            <div class="custom-file col-md-6 ml-3">
+                                                <label class="custom-file-label col-md-9" for="customInput">Upload Company Logo</label>
+                                                <input type="file" class="custom-file-input " id="customInput" name="logopic" required="" value="{{comp.company_logo}}">
+                                            </div>
+
+
+                                        </div>
+                                        <div>
+                                            <button class="btn btn-primary mt-3 pl-2 " type="submit">Submit</button>
+                                        </div>
+
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endblock %}
+            </div>
+        </section>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="footer">
+    <div class="row align-items-center justify-content-xl-between">
+      <div class="col-xl-10 m-auto text-center">
+       
+      </div>
+    </div>
+  </footer>
+</body>
+
+
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+
+    <link rel="stylesheet" href="{% static '/assets/css/bootstrap.min.css' %}">
+	<link rel="stylesheet" href="{% static '/assets/css/style.css' %}">
+	<link rel="stylesheet" href="{% static '/assets/css/bootstrap-grid.css' %}">
+    <link rel="stylesheet" href="{% static '/https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css' %}">  
+</head>
+<br>
+
+<body style="background-color: #508bfc;">
+    <section>
+        <div class="container h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="container">
+          <div class="">
+              <div class="font-weight-bold">
+                  <div class="row justify-content-center">
+                  <div class="col-md-6">
+                  <div class="login_page bg-white shadow rounded p-4">
+                  <div class="">
+                  
+  
+                      <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign In</p>
+                          <!-- <center> <h5 style="color: red;"> {{msg4}} </h5></center> -->
+                            <center> <h5 style="color: red;"> {{msg}} </h5></center>
+                            <center> <h5 style="color: red;"> {{msg2}} </h5></center>
+                          
+
+                    <form class="login-form" method="POST" action="{% url 'login' %}" >
+                        {% csrf_token %}
+
+                        <div class="form-group positions-relative col-md-6 mb-4">
+
+                            <label>Select Role<span class="text-danger">*</span></label>
+
+                            <select class="form-select" aria-label="Default select example" name="role" id="role">
+
+                                <option selected>Select Role</option>
+                                <option>Candidate</option>
+                                <option>Company</option>
+                            </select>
+                        </div>
+
+                        <!-- Email input -->
+                        
+                        
+                        <label>Email<span class="text-danger" for="form2Example1" >*</span> </label>
+						<input type="email" class="form-control" placeholder="Email" name="email" required=""/>
+
+                        </div>
+                    
+                        <!-- Password input -->
+                        <div class="form-outline mb-4 mt-4">
+                            <label>Password<span class="text-danger" for="form2Example1" >*</span> </label>
+                            <input type="password" id="form2Example2" class="form-control"  placeholder="Password" name="password" required="" />
+                            <small style="color: red;" >{{msg1}}</small>
+
+                            <p><a href="#!" class="text-primary">Forgot password?</a></p>
+                        </div>
+
+                            {% if messages %}
+                                {% for message in messages %}
+                                    {% if message.tags %}  <script>alert("{{ message }}")</script> {% endif %}
+                                {% endfor %}
+                            {% endif %}
+                            
+                        <!-- Submit button -->
+                        <center>
+
+                            <button type="submit" class="btn btn-primary w-100">Login</button>
+                            <p >Not a member? <a href="{% url 'signup' %}" class="text-primary">Register</a></p>
+                        </center>
+                        
+                      
+                    </form>
+                </div>
+                
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</body>
+</html>

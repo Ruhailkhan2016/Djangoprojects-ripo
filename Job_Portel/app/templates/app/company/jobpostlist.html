@@ -1,0 +1,69 @@
+{% extends "app/company/base1.html" %} {% block content %} {% load static %}
+
+
+    
+    <!-- Begin Page Content -->
+    <div class="container-fluid mb-2">
+
+        <!-- Page Heading -->
+        <h1 class="mt-4">Job Post List</h1>
+            <ol class="breadcrumb mb-4">
+                <li class="breadcrumb-item"><a href="">Dashboard</a></li>
+                <li class="breadcrumb-item active"> Job Post List </li>
+            </ol>
+
+        <!-- DataTales Example -->
+        <div class="card mb-4">
+            
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" >
+                        <thead>
+                            <tr>
+                                <th>Job Name</th>
+                                <th>Company Name</th>
+                                <th>Location</th>
+                                <th>Company Website</th>
+                                <th>Experience</th>
+                                <th>Salary Package</th>
+                            </tr>
+                        </thead>
+                        <!-- <tfoot>
+                            <tr>
+                                <th>Job Name</th>
+                                <th>Company Name</th>
+                                <th>Location</th>
+                                <th>Company Website</th>
+                                <th>Experience</th>
+                                <th>Salary Package</th>
+                            </tr>
+                        </tfoot> -->
+
+                        {% if all_job %}
+                        <tbody>
+
+                            {% for i in all_job %}
+                            <tr>
+                                <td>{{i.jobname}}</td>
+                                <td>{{i.companyname}}</td>
+                                <td>{{i.location}}</td>
+                                <td>{{i.companywebsite}}</td>
+                                <td>{{i.experience}}</td>
+                                <td>{{i.salarypackage}}</td>
+                            </tr>
+                            {% endfor %}
+
+                        </tbody>
+                        {% endif %}
+
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- /.container-fluid -->
+
+<!-- End of Main Content -->
+{% endblock %}
+

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    {% extends "app/admin/base1.html" %}
+    {% block content %}
+    {% load static %}
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Company List</title>
+
+    
+
+</head>
+
+<body>
+
+    
+    <!-- Begin Page Content -->
+    <div class="container-fluid">
+
+        <!-- Page Heading -->
+        <h1 class="mt-4">Company List</h1>
+            <ol class="breadcrumb mb-4">
+                <li class="breadcrumb-item"><a href="">Dashboard</a></li>
+                <li class="breadcrumb-item active"> Company List </li>
+            </ol>
+
+        <!-- DataTales Example -->
+        <div class="card mb-4">
+            
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" >
+                        <thead>
+                            <tr>
+                                <th>Email</th>
+                                <th>Role</th>
+                                <th>is_varified</th>
+                                <th>is_created</th>
+                                <th>is_updated</th>
+                                <th>Update</th>
+                                <th>Delete</th>
+                             
+                            </tr>
+                        </thead>
+                        <!-- <tfoot>
+                            <tr>
+                                <th>Email</th>
+                                <th>Role</th>
+                                <th>is_varified</th>
+                                <th>is_updated</th>
+                                <th>Delete</th>
+                            </tr>
+                        </tfoot> -->
+
+                        {% if allcompany %}
+                        <tbody>
+
+                            {% for i in allcompany %}
+                            <tr>
+                                <td>{{i.email}}</td>
+                                <td>{{i.role}}</td>
+                                <td>{{i.is_varified}}</td>
+                                <td>{{i.is_created}}</td>
+                                <td>{{i.is_updated}}</td>
+
+                                <td>
+                                    <form method="POST" action="{% url 'verifypage' pk=i.id %}">
+                                        {% csrf_token %}
+                                        <input class="btn btn-sm btn-primary" type="submit" value="Update">
+                                    </form>
+
+                                </td>
+
+
+                                <td>
+                                    <form action="{% url 'companydelete' pk=i.id %}" method="POST">
+                                        {% csrf_token %}
+                                        <input class="btn btn-sm btn-primary" type="submit" value="Delete">
+                                    </form>
+
+                                </td>
+                             
+                            </tr>
+                            {% endfor %}
+
+                        </tbody>
+                        {% endif %}
+
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- /.container-fluid -->
+
+<!-- End of Main Content -->
+
+{% endblock %}
+
+</body>
