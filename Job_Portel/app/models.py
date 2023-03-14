@@ -1,10 +1,16 @@
 
+# This code is a Python module that defines the models for a Django web application. 
+# The module defines four classes, UserMaster, Candidate, Company, JobDetails and ApplyList, each representing a database table.
+
 from django.db import models
 
 
 # Create your models here.
 
 # Master Model
+
+# UserMaster is a master model that contains fields for a user's email, password, role, and status. 
+# This model can be used for authentication and authorization purposes.
 class UserMaster(models.Model):
     
     email = models.EmailField(max_length=50)
@@ -19,6 +25,9 @@ class UserMaster(models.Model):
 
 
 # Cadidate model
+
+# Candidate represents a candidate who is looking for a job. 
+# It contains fields for the candidate's personal information, job preferences, and education.
 class Candidate(models.Model):
     
     user_id = models.ForeignKey(UserMaster, on_delete=models.CASCADE)
@@ -46,6 +55,9 @@ class Candidate(models.Model):
 
 
 # Comapany model
+
+# Company represents a company that is hiring. 
+# It contains fields for the company's information, such as name, contact information, and description.
 class Company(models.Model):
     
     user_id = models.ForeignKey(UserMaster, on_delete=models.CASCADE)
@@ -63,6 +75,8 @@ class Company(models.Model):
     
 
 # job details model
+
+# JobDetails contains information about a specific job opening, such as the job name, qualifications, responsibilities, location, and salary.
 class JobDetails(models.Model):
     
     company_id = models.ForeignKey(Company, on_delete=models.CASCADE)
@@ -83,7 +97,10 @@ class JobDetails(models.Model):
     
 
 
+# Apply List model
 
+# ApplyList is a model that is used to store information about candidates who have applied for a job. 
+# It contains fields for the candidate's information, the job they applied for, and their resume.
 class ApplyList(models.Model):
 
     candidate = models.ForeignKey(Candidate, on_delete=models.CASCADE)
@@ -97,4 +114,19 @@ class ApplyList(models.Model):
     gender = models.CharField(max_length=200)
     
     uploadfile = models.FileField(upload_to="app/resumes/")
+    
+    
+    
+    
+
+# Each model is a subclass of Django's models.Model class and defines its fields using subclasses of models.Field. 
+# These fields specify the types and constraints of the data that will be stored in the database.
+
+# For example, models.CharField is used to define a field for storing a string, and models.IntegerField is used to define a field for storing an integer. 
+# The ForeignKey field is used to establish a one-to-many relationship between two models.
+
+# The FileField and ImageField fields are used to store files and images, respectively.
+
+# In addition to the fields, each model also specifies a set of methods and properties that define how the model interacts with the database and 
+# how it is displayed in the Django admin interface.
     
